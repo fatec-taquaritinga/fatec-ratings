@@ -1,25 +1,48 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Login from './views/Login.vue'
 import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home
+      path: '/login',
+      name: 'login',
+      component: Login
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/',
+      name: 'home',
+      component: Home,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/teachers',
+      name: 'teachers',
+      meta: { requiresAuth: true },
+      component: () => import(/* webpackChunkName: "teachers" */ './views/Teachers.vue')
+    },
+    {
+      path: '/employees',
+      name: 'employees',
+      meta: { requiresAuth: true },
+      component: () => import(/* webpackChunkName: "employees" */ './views/Employees.vue')
     }
   ]
 })
+
+router.beforeEach((...args) => {
+  const to = args[0], next = args[2]
+
+  const currentUser = localStorage['user']
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+
+  if (requiresAuth && !currentUser) next({ name: 'login', query: { from: window.location.pathname } })
+  else if (!requiresAuth || currentUser) next()
+})
+
+export default router

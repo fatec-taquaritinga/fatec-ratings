@@ -1,29 +1,26 @@
 # fatec-ratings
 
-## Project setup
+> Aplicação de escolha de homenageados da Fatec Taquaritinga, desenvolvido em Vue.js.
+
+## Instalar dependências
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compilar com hot-reload para desenvolvimento
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compilar e minificar para produção
 ```
 npm run build
 ```
 
-### Run your tests
+### Executar em produção
 ```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
+npm start
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Modificar configurações
+Ver a documentação de [referência do Vue CLI](https://cli.vuejs.org/config/).

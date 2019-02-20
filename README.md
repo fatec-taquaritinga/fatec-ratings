@@ -1,6 +1,6 @@
 # fatec-ratings
 
-> Aplicação de escolha de homenageados da Fatec Taquaritinga, desenvolvido em Vue.js.
+> Aplicação de escolha de homenageados da Fatec Taquaritinga, desenvolvida em Vue.js.
 
 ## Instalar dependências
 ```
